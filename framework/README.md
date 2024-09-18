@@ -1,56 +1,66 @@
-## Разработка скрипта уведомлений
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Задача:
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Необходимо разработать скрипт на Laravel, который будет работать с представленной таблицей:
+## About Laravel
 
-https://docs.google.com/spreadsheets/d/1mU-SdhP12-zJntAcH8HR6bLEMuWNscuHzQYGrMYFXtQ/edit?gid=0#gid=0 
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-и выполнять следующие функции:
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-    1. Напоминание о днях рождения:
-        ◦ Отправка уведомления в день рождения пользователя.
-        ◦ Отправка уведомления за 2 недели до дня рождения пользователя.
-    2. Напоминание о необходимости общения:
-        ◦ Отправка уведомления, если с пользователем не было общения в течение 2 недель или более.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Требования:
+## Learning Laravel
 
-    1. Работа с таблицей:
-        ◦ Скрипт должен уметь считывать данные из файла Google Sheets
-        ◦ Скрипт должен обрабатывать данные напрямую из файла, без использования базы данных.
-    2. Функциональность:
-        ◦ Реализовать команду Laravel, которая будет выполняться по расписанию (например, ежедневно) и проверять условия для отправки уведомлений.
-        ◦ Уведомления могут быть реализованы в виде отправки на указанный адрес электронной почты.
-        ◦ Должна быть возможность указать путь к файлу с данными через конфигурационный файл или переменные окружения.
-        ◦ Должна быть возможность указать почту для отправки уведомлений. 
-    3. Контейнеризация:
-        ◦ Выложить проект в Docker. Требуется создание Dockerfile и docker-compose.yml для простого разворачивания проекта.
-    4. Документация:
-        ◦ Описать процесс установки и запуска проекта в readme.md файле.
-        ◦ Привести пример конфигурации .env файла, где будет указываться путь к файлу с таблицей.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Установка и запуск:
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-    ◦ удобным способом забрать проект с этого репозитория
-    ◦ создать файла .env в каталоге проекта, пример - файл .env.example там же
-    ◦ создать файла .env в каталоге /framework, пример - файл .env.example там же, в нем для корректной работы указать настройки для бд:
-        DB_CONNECTION=mysql
-        DB_HOST=mysql17
-        DB_PORT=3306
-        DB_DATABASE=<из вашего .env из каталога проекта>
-        DB_USERNAME=<из вашего .env из каталога проекта>
-        DB_PASSWORD=<из вашего .env из каталога проекта>
-    ◦ для отправки email также в файле ./framework/.env внести корректные данные для вашего типа почтового протокола  
-    ◦ для работы команды указать так же в файле ./framework/.env параметры:
-        FILE_PATH=<путь к файлу google sheets>
-        EMAIL=<email на который должны отправляться уведомления>
-        CHECK_TIME=<время ежедневного запуска команды, пример 8:00>
-    ◦ в каталоге с проектом проверить/дать права
-    ◦ в каталоге с проектом запустить команду в терминале docker compose up --build
-    ◦ в каталоге с проектом запустить команду в терминале docker ps и найти id контейнера образом test_task17-app
-    ◦ в каталоге с проектом запустить команду в терминале docker exec -it <id из предыдущего пункта> bash
-    ◦ в открывшейся командной строке запустить планировщик задания командой php artisan schedule:run
-    ◦ планировщик в указанное время выполнит команду, она при наличии нужных данных добавит заданий в очередь
-    ◦ в терминале контейнера запустить обработку очередей php artisan queue:work
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+
+### Premium Partners
+
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
