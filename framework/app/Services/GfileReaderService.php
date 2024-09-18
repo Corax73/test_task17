@@ -7,9 +7,8 @@ class GfileReaderService
     /**
      * Returns an array of data obtained from a reference in the environment parameter.
      */
-    public static function getContent(): array
+    public static function getContent(string $url = ''): array
     {
-        $url = env('FILE_PATH');
         $resp = [];
         if ($url && str_contains($url, 'https://docs.google.com/spreadsheets/d/')) {
             $arr = explode('/', $url);

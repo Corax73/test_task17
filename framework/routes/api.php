@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\v1\GfileController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware([])->controller(GfileController::class)->group(function () {
-    Route::get('data/get', 'get')->name('data.get');
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });

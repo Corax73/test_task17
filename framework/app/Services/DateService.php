@@ -4,6 +4,8 @@ namespace App\Services;
 
 class DateService
 {
+    const DAYS_BEFORE_BIRTHDAY = 14;
+
     /**
      * Returns an array with elements selected from the passed array whose dates under the passed keys match the conditions.
      */
@@ -26,6 +28,9 @@ class DateService
         return $resp;
     }
 
+    /**
+     * Converts date to format `d.m.Y`.
+     */
     public static function dateCasting(string $date): string
     {
         if ($date) {
@@ -38,6 +43,9 @@ class DateService
         return $date;
     }
 
+    /**
+     * Checks the date is correct.
+     */
     public static function checkDate(string $date, string $format = 'd.m.Y'): bool
     {
         $resp = false;
@@ -50,22 +58,28 @@ class DateService
         return $resp;
     }
 
+    /**
+     * Checks comparison against exact match.
+     */
     public static function strictEquality(int $startingPoint, string $itemDate): bool
     {
         $resp = false;
         if ($itemDate) {
-            if ($startingPoint == strtotime($itemDate) || $startingPoint - 14 * 24 * 60 * 60 == strtotime($itemDate)) {
+            if ($startingPoint == strtotime($itemDate) || $startingPoint - self::DAYS_BEFORE_BIRTHDAY * 24 * 60 * 60 == strtotime($itemDate)) {
                 $resp = true;
             }
         }
         return $resp;
     }
 
+    /**
+     * Checks the comparison is greater than or equal to.
+     */
     public static function gtOrEqual(int $startingPoint, string $itemDate, string $format = 'd.m.Y'): bool
     {
         $resp = false;
         if ($itemDate) {
-            if ($startingPoint - 14 * 24 * 60 * 60 >= strtotime($itemDate)) {
+            if ($startingPoint - self::DAYS_BEFORE_BIRTHDAY * 24 * 60 * 60 >= strtotime($itemDate)) {
                 $resp = true;
             }
         }
