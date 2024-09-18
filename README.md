@@ -33,8 +33,8 @@ https://docs.google.com/spreadsheets/d/1mU-SdhP12-zJntAcH8HR6bLEMuWNscuHzQYGrMYF
 Установка и запуск:
 
     ◦ удобным способом забрать проект с этого репозитория
-    ◦ создать файла .env в каталоге проекта, пример - файл .env.example там же
-    ◦ создать файла .env в каталоге /framework, пример - файл .env.example там же, в нем для корректной работы указать настройки для бд:
+    ◦ создать файл .env в каталоге проекта, пример - файл .env.example там же
+    ◦ создать файл .env в каталоге /framework, пример - файл .env.example там же, в нем для корректной работы указать настройки для бд:
         DB_CONNECTION=mysql
         DB_HOST=mysql17
         DB_PORT=3306
